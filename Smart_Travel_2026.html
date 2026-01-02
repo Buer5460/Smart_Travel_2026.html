@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智行未来：AI 赋能客运交通变革研究 - 2026 深度分析 (修复版)</title>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=PingFang+SC:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0b0c10;
+            --panel-bg: #1f2833;
+            --text-main: #c5c6c7;
+            --accent-cyan: #66fcf1;
+            --accent-dark-cyan: #45a29e;
+            --accent-red: #fc5185;
+            --accent-purple: #a29bfe;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'PingFang SC', sans-serif;
+            margin: 0;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        /* 标题区 */
+        header {
+            border-bottom: 2px solid var(--accent-dark-cyan);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+        }
+
+        h1 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2.2rem;
+            margin: 0;
+            color: var(--accent-cyan);
+            text-shadow: 0 0 10px rgba(102, 252, 241, 0.3);
+        }
+
+        .subtitle {
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        /* 网格布局 */
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 20px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background-color: var(--panel-bg);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            border: 1px solid #333;
+            position: relative;
+        }
+
+        .card:hover {
+            border-color: var(--accent-dark-cyan);
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 15px;
+            padding-left: 10px;
+            border-left: 4px solid var(--accent-cyan);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* 布局控制 */
+        .col-span-12 { grid-column: span 12; }
+        .col-span-8 { grid-column: span 8; }
+        .col-span-6 { grid-column: span 6; }
+        .col-span-4 { grid-column: span 4; }
+
+        @media (max-width: 1024px) {
+            .col-span-8, .col-span-6, .col-span-4 { grid-column: span 12; }
+        }
+
+        /* 图表容器 */
+        .chart-box {
+            width: 100%;
+            height: 350px;
+            /* 确保容器有显式高度，防止图表渲染失败 */
+            min-height: 300px; 
+        }
+
+        .chart-tall {
+            height: 450px;
+        }
+
+        /* 关键指标 KPI */
+        .kpi-container {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            height: 100%;
+            align-items: center;
+        }
+        .kpi-item { flex: 1; }
+        .kpi-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--accent-cyan);
+            font-family: 'JetBrains Mono';
+        }
+        .kpi-label { font-size: 0.9rem; color: #aaa; }
+
+        /* 文字列表 */
+        .insight-list li {
+            margin-bottom: 12px;
+            line-height: 1.5;
+            color: #ddd;
+        }
+        .highlight { color: var(--accent-cyan); font-weight: bold; }
+        .highlight-red { color: var(--accent-red); font-weight: bold; }
+
+        footer { text-align: center; margin-top: 40px; color: #555; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div>
+        <h1>智行未来 <span style="font-size:0.5em; color:var(--text-main)">VER 2.0</span></h1>
+        <div class="subtitle">AI 赋能客运交通变革研究：趋势、差距与演进路线</div>
+    </div>
+    <div style="text-align: right;">
+        <div style="font-size: 0.8rem; color: #666;">报告生成日期: 2026.01.02</div>
+    </div>
+</header>
+
+<div class="dashboard">
+
+    <div class="card col-span-4">
+        <div class="card-title">关键指标 (Key Metrics)</div>
+        <div class="kpi-container">
+            <div class="kpi-item">
+                <div class="kpi-value">60%</div>
+                <div class="kpi-label">交通改善临界点<br>(AI 渗透率)</div>
+            </div>
+            <div class="kpi-item">
+                <div class="kpi-value" style="color: var(--accent-red)">45%</div>
+                <div class="kpi-label">DMO vs 运营商<br>数字化差距</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card col-span-8">
+        <div class="card-title">💡 深度洞察：AI 正在重塑什么？</div>
+        <ul class="insight-list" style="columns: 2;">
+            <li><span class="highlight">趋势：Agentic AI (代理智能)</span> — 2024年我们还在用AI生成攻略，2026年AI将直接接管预订、改签和价格谈判。</li>
+            <li><span class="highlight-red">痛点：执行层的断裂</span> — 目的地管理组织(DMO)拥有宏大的AI战略，但一线车队和酒店运营商仍停留在基础数字化阶段，导致体验割裂。</li>
+            <li><span class="highlight">模型：拥堵的非线性治理</span> — ODE模型证明，只有当联网智能车辆达到60%以上，城市交通流速才会出现指数级提升。</li>
+            <li><span class="highlight">未来：生态协同</span> — 2028年后的竞争不再是单体APP的竞争，而是跨平台智能体(Swarm Intelligence)的生态博弈。</li>
+        </ul>
+    </div>
+
+    <div class="card col-span-6">
+        <div class="card-title">
+            <span>⚖️ 供需侧对比：谁在主导 AI 变革？</span>
+            <span style="font-size: 0.8rem; color:#888; font-weight:normal;">DMO(管理) vs 运营商(执行)</span>
+        </div>
+        <div id="chart-gap" class="chart-box"></div>
+    </div>
+
+    <div class="card col-span-6">
+        <div class="card-title">
+            <span>🚦 ODE 模型：AI 渗透率与效率关系</span>
+            <span style="font-size: 0.8rem; color:#888; font-weight:normal;">S型曲线临界点分析</span>
+        </div>
+        <div id="chart-ode" class="chart-box"></div>
+    </div>
+
+    <div class="card col-span-12">
+        <div class="card-title">
+            <span>🧬 2024-2030 客运 AI 能力演进路线图</span>
+            <span style="font-size: 0.8rem; color:#888; font-weight:normal;">技术代际更替预测</span>
+        </div>
+        <div id="chart-evolution" class="chart-box chart-tall"></div>
+    </div>
+
+</div>
+
+<footer>
+    Generated by Gemini | 基于 McKinsey & Stanford HAI 2025 报告数据 | 修复了图表渲染问题
+</footer>
+
+<script>
+    // 确保 DOM 加载完成后再执行 ECharts 初始化
+    window.addEventListener('load', function() {
+        
+        // --- 1. 供需对比图 (Butterfly Chart / 蝴蝶图) ---
+        // 修复策略：使用正负条形图，但通过 formatter 将标签全部显示为正数
+        const chartGap = echarts.init(document.getElementById('chart-gap'));
+        chartGap.setOption({
+            backgroundColor: 'transparent',
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: { type: 'shadow' },
+                formatter: function (params) {
+                    let str = params[0].name + '<br/>';
+                    params.forEach(item => {
+                        str += item.marker + item.seriesName + ': ' + Math.abs(item.value) + '%<br/>';
+                    });
+                    return str;
+                }
+            },
+            legend: { 
+                data: ['DMO (战略/营销)', '运营商 (执行/服务)'],
+                textStyle: { color: '#ccc' },
+                bottom: 0
+            },
+            grid: { left: '3%', right: '4%', bottom: '10%', containLabel: true },
+            xAxis: {
+                type: 'value',
+                axisLabel: { 
+                    formatter: function(value) { return Math.abs(value) + '%'; },
+                    color: '#888'
+                },
+                splitLine: { lineStyle: { color: '#333', type: 'dashed' } }
+            },
+            yAxis: {
+                type: 'category',
+                axisTick: { show: false },
+                data: ['战略规划', '品牌营销', '行程生成', '客户服务(CS)', '数据分析'],
+                axisLabel: { color: '#fff' }
+            },
+            series: [
+                {
+                    name: 'DMO (战略/营销)',
+                    type: 'bar',
+                    stack: 'total',
+                    label: { show: true, position: 'right', formatter: '{c}%' },
+                    data: [85, 90, 45, 50, 80], // DMO 数据
+                    itemStyle: { color: '#66fcf1', borderRadius: [0, 4, 4, 0] }
+                },
+                {
+                    name: '运营商 (执行/服务)',
+                    type: 'bar',
+                    stack: 'total',
+                    label: { 
+                        show: true, 
+                        position: 'left', 
+                        formatter: function(params) { return Math.abs(params.value) + '%'; } 
+                    },
+                    data: [-30, -50, -80, -70, -35], // 运营商数据 (负值用于向左绘制)
+                    itemStyle: { color: '#fc5185', borderRadius: [4, 0, 0, 4] }
+                }
+            ]
+        });
+
+        // --- 2. 演进路线图 (Gantt Chart via Stacked Bar) ---
+        // 修复策略：不使用复杂的 custom 渲染，而是使用“透明辅助柱”+“实际时长柱”的堆叠方式，确保 100% 可渲染。
+        const chartEvolution = echarts.init(document.getElementById('chart-evolution'));
+        chartEvolution.setOption({
+            backgroundColor: 'transparent',
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: { type: 'shadow' },
+                formatter: function (params) {
+                    // 过滤掉透明的辅助柱
+                    let tar = params.find(p => p.seriesName !== 'placeholder');
+                    if (tar) {
+                        return tar.name + '<br/>' + tar.seriesName + ' : ' + tar.value + ' 年持续期';
+                    }
+                }
+            },
+            grid: { top: '10%', bottom: '10%', left: '3%', right: '4%', containLabel: true },
+            xAxis: {
+                type: 'value',
+                min: 2024,
+                max: 2030,
+                axisLabel: { 
+                    formatter: '{value}',
+                    color: '#ccc',
+                    fontWeight: 'bold'
+                },
+                splitLine: { lineStyle: { color: '#333', type: 'dashed' } }
+            },
+            yAxis: {
+                type: 'category',
+                data: ['L4: 自主生态 (Ecosystem)', 'L3: 代理执行 (Agentic)', 'L2: 生成式辅助 (GenAI)', 'L1: 规则自动化 (Rule-based)'],
+                axisLabel: { color: '#66fcf1', fontWeight: 'bold' }
+            },
+            series: [
+                {
+                    name: 'placeholder', // 辅助透明柱，用于推挤位置
+                    type: 'bar',
+                    stack: 'total',
+                    itemStyle: { borderColor: 'transparent', color: 'transparent' },
+                    emphasis: { itemStyle: { borderColor: 'transparent', color: 'transparent' } },
+                    data: [2028, 2026, 2024, 2024] // 起始年份
+                },
+                {
+                    name: '技术成熟期',
+                    type: 'bar',
+                    stack: 'total',
+                    label: { 
+                        show: true, 
+                        position: 'inside', 
+                        formatter: '{b}', // 显示Y轴类别名在柱子内
+                        color: '#000',
+                        fontWeight: 'bold'
+                    },
+                    data: [
+                        { value: 2, itemStyle: { color: '#a29bfe' }, name: '跨平台智能体协作' }, // 2028-2030 (长度2)
+                        { value: 3, itemStyle: { color: '#fc5185' }, name: 'AI 自主谈判/预订' }, // 2026-2029 (长度3)
+                        { value: 2, itemStyle: { color: '#45a29e' }, name: 'Copilot 辅助生成' }, // 2024-2026 (长度2)
+                        { value: 1, itemStyle: { color: '#666' }, name: 'Chatbot 问答' }     // 2024-2025 (长度1)
+                    ],
+                    barWidth: '50%'
+                }
+            ]
+        });
+
+        // --- 3. ODE 模型 (Line Chart) - 保持原有逻辑 ---
+        const chartOde = echarts.init(document.getElementById('chart-ode'));
+        const adoptionRate = Array.from({length: 21}, (_, i) => i * 5); 
+        const efficiencyData = adoptionRate.map(x => {
+            // S曲线模拟
+            let val = 100 / (1 + Math.exp(-0.15 * (x - 60))); 
+            return Math.round(val * 10) / 10;
+        });
+
+        chartOde.setOption({
+            backgroundColor: 'transparent',
+            tooltip: { trigger: 'axis' },
+            grid: { top: '15%', bottom: '10%', left: '10%', right: '10%' },
+            xAxis: {
+                type: 'category',
+                name: 'AI 车辆渗透率 (%)',
+                data: adoptionRate,
+                axisLabel: { color: '#ccc' }
+            },
+            yAxis: {
+                type: 'value',
+                name: '通行效率指数',
+                splitLine: { lineStyle: { color: '#333' } },
+                axisLabel: { color: '#ccc' }
+            },
+            visualMap: {
+                show: false,
+                dimension: 0,
+                pieces: [{lte: 11, color: '#666'}, {gt: 11, color: '#66fcf1'}]
+            },
+            series: [{
+                type: 'line',
+                smooth: true,
+                lineStyle: { width: 4 },
+                data: efficiencyData,
+                markPoint: {
+                    data: [{ value: '临界点 60%', coord: ['60', 50], itemStyle: { color: '#fc5185' } }]
+                },
+                areaStyle: {
+                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                        { offset: 0, color: 'rgba(102, 252, 241, 0.3)' },
+                        { offset: 1, color: 'rgba(102, 252, 241, 0)' }
+                    ])
+                }
+            }]
+        });
+
+        // 窗口自适应
+        window.onresize = function() {
+            chartGap.resize();
+            chartEvolution.resize();
+            chartOde.resize();
+        };
+    });
+</script>
+</body>
+</html>
